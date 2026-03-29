@@ -48,7 +48,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Built by
 
-[@quantumai25](https://github.com/quantumai25) — also building [Chrone](https://play.google.com/store/apps/details?id=com.chrone), an on-device AI calendar for Android.
+[@quantumai25](https://github.com/quantumai25) — also building [Chrone](https://play.google.com/store/apps/details?id=com.chrone.ai), an on-device AI calendar for Android.
 
 ---
 
