@@ -1,6 +1,6 @@
 # Screenshot Studio
 
-Free, open-source Play Store screenshot editor built for Android developers.
+Free, open-source Play/App Store screenshot editor built for Android/iOS developers.
 
 🔗 **Use it live → [chrone.vercel.app](https://chrone.vercel.app)**
 
