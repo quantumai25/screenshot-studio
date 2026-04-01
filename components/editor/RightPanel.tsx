@@ -177,9 +177,44 @@ function DeviceEditor({ slideId }: { slideId: string }) {
         e.target.value = '' // reset input
     }
 
-    const devices: { id: DeviceFrame; label: string }[] = [
-        { id: 'pixel-8', label: 'Pixel 8' }, { id: 'iphone-15', label: 'iPhone 15' },
-        { id: 'clean', label: 'Clean' }, { id: 'none', label: 'None' },
+    const devices: { id: DeviceFrame; label: string; category: string }[] = [
+        // Android Phones - Google
+        { id: 'pixel-8', label: 'Pixel 8', category: 'Android' },
+        { id: 'pixel-8-pro', label: 'Pixel 8 Pro', category: 'Android' },
+        { id: 'pixel-7', label: 'Pixel 7', category: 'Android' },
+        { id: 'pixel-7-pro', label: 'Pixel 7 Pro', category: 'Android' },
+        { id: 'pixel-6', label: 'Pixel 6', category: 'Android' },
+        { id: 'pixel-6-pro', label: 'Pixel 6 Pro', category: 'Android' },
+        
+        // Android Phones - Samsung
+        { id: 'galaxy-s24', label: 'Galaxy S24', category: 'Android' },
+        { id: 'galaxy-s24-ultra', label: 'Galaxy S24 Ultra', category: 'Android' },
+        { id: 'galaxy-s23', label: 'Galaxy S23', category: 'Android' },
+        { id: 'galaxy-z-fold-6', label: 'Galaxy Z Fold 6', category: 'Android' },
+        
+        // Android Phones - Other
+        { id: 'oneplus-12', label: 'OnePlus 12', category: 'Android' },
+        { id: 'motorola-edge', label: 'Motorola Edge 50', category: 'Android' },
+        { id: 'nothing-phone-2', label: 'Nothing Phone 2', category: 'Android' },
+        
+        // iPhone Models
+        { id: 'iphone-15', label: 'iPhone 15', category: 'iPhone' },
+        { id: 'iphone-15-plus', label: 'iPhone 15 Plus', category: 'iPhone' },
+        { id: 'iphone-15-pro', label: 'iPhone 15 Pro', category: 'iPhone' },
+        { id: 'iphone-15-pro-max', label: 'iPhone 15 Pro Max', category: 'iPhone' },
+        { id: 'iphone-14', label: 'iPhone 14', category: 'iPhone' },
+        { id: 'iphone-14-pro', label: 'iPhone 14 Pro', category: 'iPhone' },
+        { id: 'iphone-14-pro-max', label: 'iPhone 14 Pro Max', category: 'iPhone' },
+        { id: 'iphone-13', label: 'iPhone 13', category: 'iPhone' },
+        { id: 'iphone-13-pro', label: 'iPhone 13 Pro', category: 'iPhone' },
+        
+        // Tablets
+        { id: 'ipad-pro', label: 'iPad Pro 12.9"', category: 'Tablet' },
+        { id: 'galaxy-tab-s9', label: 'Galaxy Tab S9', category: 'Tablet' },
+        
+        // Generic
+        { id: 'clean', label: 'Clean Frame', category: 'Generic' },
+        { id: 'none', label: 'No Frame', category: 'Generic' },
     ]
     const colors: { id: 'black' | 'white' | 'titanium'; hex: string }[] = [
         { id: 'black', hex: '#1a1a1a' }, { id: 'white', hex: '#e8e8e8' }, { id: 'titanium', hex: '#8a8680' },
@@ -188,8 +223,26 @@ function DeviceEditor({ slideId }: { slideId: string }) {
     return (
         <div>
             <Label>Frame</Label>
-            <div style={{ display: 'flex', gap: 5, marginBottom: 12 }}>
-                {devices.map(d => <button key={d.id} onClick={() => setDevice(slideId, d.id)} style={S.chip(slide.device === d.id)}>{d.label}</button>)}
+            <div style={{ marginBottom: 12 }}>
+                {['Android', 'iPhone', 'Tablet', 'Generic'].map(category => (
+                    <div key={category} style={{ marginBottom: 10 }}>
+                        <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, marginBottom: 6 }}>{category}</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 5 }}>
+                            {devices.filter(d => d.category === category).map(d => (
+                                <button key={d.id} onClick={() => setDevice(slideId, d.id)} 
+                                    style={{
+                                        ...S.chip(slide.device === d.id),
+                                        fontSize: 10,
+                                        padding: '6px 8px',
+                                        textAlign: 'left',
+                                    }} 
+                                    title={d.label}>
+                                    {d.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
 
             <Label>Frame color</Label>
